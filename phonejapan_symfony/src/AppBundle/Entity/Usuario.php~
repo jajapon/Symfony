@@ -1,0 +1,160 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Usuario
+ *
+ * @ORM\Table(name="usuario", uniqueConstraints={@ORM\UniqueConstraint(name="USERNAME", columns={"USERNAME"})})
+ * @ORM\Entity
+ */
+class Usuario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="COD_USU", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $codUsu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="USERNAME", type="string", length=60, nullable=true)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="USERPASS", type="string", length=60, nullable=true)
+     */
+    private $userpass;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ROLE", type="string", length=20, nullable=true)
+     */
+    private $role;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ESTADO", type="string", length=30, nullable=true)
+     */
+    private $estado;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="EMAIL", type="string", length=500, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRE", type="string", length=80, nullable=true)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="APELLIDOS", type="string", length=80, nullable=true)
+     */
+    private $apellidos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DNI", type="string", length=9, nullable=true)
+     */
+    private $dni;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_NAC", type="date", nullable=true)
+     */
+    private $fechaNac;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DIRECCION", type="string", length=200, nullable=true)
+     */
+    private $direccion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CP", type="integer", nullable=true)
+     */
+    private $cp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CIUDAD", type="string", length=60, nullable=true)
+     */
+    private $ciudad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PROVINCIA", type="string", length=60, nullable=true)
+     */
+    private $provincia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PAIS", type="string", length=60, nullable=true)
+     */
+    private $pais;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="TLF", type="integer", nullable=true)
+     */
+    private $tlf;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="THEME", type="string", length=200, nullable=true)
+     */
+    private $theme;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Producto", inversedBy="codUsu")
+     * @ORM\JoinTable(name="cesta",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="COD_USU", referencedColumnName="COD_USU")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="COD_PROD", referencedColumnName="COD_PROD")
+     *   }
+     * )
+     */
+    private $codProd;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->codProd = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Lineadepedido" table="lineadepedido">
+    <indexes>
+      <index name="FK_PED_LP" columns="COD_PEDIDO"/>
+      <index name="FK_PED_P" columns="COD_PROD"/>
+    </indexes>
+    <id name="codLinea" type="integer" column="COD_LINEA"/>
+    <id name="codPedido" association-key="true"/>
+    <id name="codProd" association-key="true"/>
+    <field name="cantidad" type="integer" column="CANTIDAD" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <one-to-one field="codProd" target-entity="Producto" fetch="LAZY">
+      <join-columns>
+        <join-column name="COD_PROD" referenced-column-name="COD_PROD"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="codPedido" target-entity="Pedido" fetch="LAZY">
+      <join-columns>
+        <join-column name="COD_PEDIDO" referenced-column-name="COD_PEDIDO"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

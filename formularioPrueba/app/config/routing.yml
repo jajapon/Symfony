@@ -1,0 +1,7 @@
+inicio:
+    path: "/"
+    defaults: { _controller: AppBundle:Default:inicio}
+
+bienvenido:
+    path: "/welcome"
+    defaults: { _controller: AppBundle:Default:welcome}

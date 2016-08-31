@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Caracteristicas" table="caracteristicas">
+    <indexes>
+      <index name="FK_CAR_PROD" columns="COD_PROD"/>
+    </indexes>
+    <id name="codCarac" type="integer" column="COD_CARAC">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="pantalla" type="string" column="PANTALLA" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="resolucion" type="string" column="RESOLUCION" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ram" type="string" column="RAM" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="minterna" type="string" column="MINTERNA" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="procesador" type="string" column="PROCESADOR" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="so" type="string" column="SO" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="frontal" type="string" column="FRONTAL" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="trasera" type="string" column="TRASERA" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="sim" type="string" column="SIM" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="codProd" target-entity="Producto" fetch="LAZY">
+      <join-columns>
+        <join-column name="COD_PROD" referenced-column-name="COD_PROD"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

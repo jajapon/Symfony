@@ -1,0 +1,60 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Suministro
+ *
+ * @ORM\Table(name="suministro", indexes={@ORM\Index(name="FK_SUM_PROD", columns={"COD_PROD"}), @ORM\Index(name="FK_SUM_PROV", columns={"COD_PROV"})})
+ * @ORM\Entity
+ */
+class Suministro
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="COD_SUM", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $codSum;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CANTIDAD", type="integer", nullable=true)
+     */
+    private $cantidad;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_SUM", type="date", nullable=false)
+     */
+    private $fechaSum;
+
+    /**
+     * @var \Producto
+     *
+     * @ORM\ManyToOne(targetEntity="Producto")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="COD_PROD", referencedColumnName="COD_PROD")
+     * })
+     */
+    private $codProd;
+
+    /**
+     * @var \Proveedor
+     *
+     * @ORM\ManyToOne(targetEntity="Proveedor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="COD_PROV", referencedColumnName="COD_PROV")
+     * })
+     */
+    private $codProv;
+
+
+}
+

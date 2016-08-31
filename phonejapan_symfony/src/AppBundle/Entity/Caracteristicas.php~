@@ -1,0 +1,99 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Caracteristicas
+ *
+ * @ORM\Table(name="caracteristicas", indexes={@ORM\Index(name="FK_CAR_PROD", columns={"COD_PROD"})})
+ * @ORM\Entity
+ */
+class Caracteristicas
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="COD_CARAC", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $codCarac;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PANTALLA", type="string", length=60, nullable=true)
+     */
+    private $pantalla;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="RESOLUCION", type="string", length=60, nullable=true)
+     */
+    private $resolucion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="RAM", type="string", length=60, nullable=true)
+     */
+    private $ram;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MINTERNA", type="string", length=60, nullable=true)
+     */
+    private $minterna;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PROCESADOR", type="string", length=200, nullable=true)
+     */
+    private $procesador;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SO", type="string", length=60, nullable=true)
+     */
+    private $so;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FRONTAL", type="string", length=60, nullable=true)
+     */
+    private $frontal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TRASERA", type="string", length=60, nullable=true)
+     */
+    private $trasera;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SIM", type="string", length=60, nullable=true)
+     */
+    private $sim;
+
+    /**
+     * @var \Producto
+     *
+     * @ORM\ManyToOne(targetEntity="Producto")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="COD_PROD", referencedColumnName="COD_PROD")
+     * })
+     */
+    private $codProd;
+
+
+}
+

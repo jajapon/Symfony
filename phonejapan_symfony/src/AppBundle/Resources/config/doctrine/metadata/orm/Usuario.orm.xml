@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Usuario" table="usuario">
+    <unique-constraints>
+      <unique-constraint name="USERNAME" columns="USERNAME"/>
+    </unique-constraints>
+    <id name="codUsu" type="integer" column="COD_USU">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="username" type="string" column="USERNAME" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="userpass" type="string" column="USERPASS" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="role" type="string" column="ROLE" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="estado" type="string" column="ESTADO" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="email" type="string" column="EMAIL" length="500" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombre" type="string" column="NOMBRE" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="apellidos" type="string" column="APELLIDOS" length="80" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dni" type="string" column="DNI" length="9" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fechaNac" type="date" column="FECHA_NAC" nullable="true"/>
+    <field name="direccion" type="string" column="DIRECCION" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="cp" type="integer" column="CP" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="ciudad" type="string" column="CIUDAD" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="provincia" type="string" column="PROVINCIA" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="pais" type="string" column="PAIS" length="60" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tlf" type="integer" column="TLF" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="theme" type="string" column="THEME" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-many field="codProd" target-entity="Producto" inversed-by="codUsu" fetch="LAZY">
+      <join-table name="cesta">
+        <join-columns>
+          <join-column name="COD_USU" referenced-column-name="COD_USU"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="COD_PROD" referenced-column-name="COD_PROD"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

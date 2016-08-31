@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include 'AppBundle:default:head.html.twig' %}
+    <link rel="stylesheet" href="{{asset('css/style_2.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <style media="screen">
+      .formato1{
+        font-family: 'c';
+      }
+      .formato2{
+        font-family: 'd';
+      }
+      .formato3{
+        font-family: 'e';
+      }
+    </style>
+  </head>
+<body>
+  <div id="wrapper">
+    {% include 'AppBundle:default:header.html.twig' %}
+    <div style="background-color:white;" >
+               <div id="cr_conten_prod">
+                <div class="row" style="margin-bottom:50px">
+                <div style="background-color:white;margin-bottom:50px;">
+                                    <div class="col-md-12">
+                                      <div class="col-md-12" style="height:25%;margin-bottom:20px;margin-top:10px">
+                                            <h4 class="formato1" style="text-transform: uppercase;float:left;padding-left:5%;margin-top:40px;font-size:23px;color:gray;text-shadow:0px 1px 0px #000;">{{producto.marca}}</h4><h1 class="formato3" style="color:#2E9AFE;text-shadow:0px 1px 0px #000;text-transform: uppercase;float:left;font-size:44px;margin-left:5px" >{{producto.modelo}}</h1>
+                                      </div>
+                                      <div class="col-md-3" style="height:50%">
+                                           <div class="col-md-12" >
+                                             <img src="{{ asset("../imagenes/productos/") ~ producto.imagen }}" style="width:85%;margin-left:1%;height:320px"alt="" />
+                                           </div>
+                                      </div>
+                                      <div class="col-md-6" style="border-right:solid gray 1px;border-left:solid gray 1px;height:50%">
+                                            <h3 class="formato1" style=";font-weight:normal;color:gray;margin-top:8px">CARACTERISTICAS:</h3>
+                                            <table class="col-md-12 table-striped  formato2" style="font-weight:normal;font-size:14px;width:100%">
+                                              <tr>
+                                                <td style="text-align:left;padding:5px 5px;width:50%">Pantalla: </td>
+                                                <td>{{cProducto.pantalla}}</td>
+                                              </tr>
+                                              <tr>
+                                                <td style="text-align:left;padding:5px 5px;">Resolución: </td>
+                                                <td>{{cProducto.resolucion}}</td>
+                                              </tr>
+                                              <tr>
+                                                <td style="text-align:left;padding:5px 5px;">Memoria RAM: </td>
+                                                <td>{{cProducto.ram}}</td>
+                                              </tr>
+                                              <tr>
+                                                <td style="text-align:left;padding:5px 5px;">Memoria Interna: </td>
+                                                <td>{{cProducto.mInterna}}</td>
+                                              </tr>
+                                              <tr>
+                                                <td style="text-align:left;padding:5px 5px;">Procesador: </td>
+                                                <td>{{cProducto.procesador}}</td>
+                                              </tr>
+                                              <tr>
+                                                <td style="text-align:left;padding:5px 5px;">Sistema Operativo: </td>
+                                                <td>{{cProducto.so}}</td>
+                                              </tr>
+                                              <tr>
+                                                <td style="text-align:left;padding:5px 5px;">Camara frontal: </td>
+                                                <td>{{cProducto.frontal}}</td>
+                                              </tr>
+                                              <tr>
+                                                <td style="text-align:left;padding:5px 5px;">Camara trasera: </td>
+                                                <td>{{cProducto.trasera}}
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td style="text-align:left;padding:5px 5px;">Tipo de SIM: </td>
+                                                <td>{{cProducto.sim}}</td>
+                                              </tr>
+                                            </table>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <h3 class="formato1" style="font-weight:normal;color:gray;margin-top:8px;text-align:center">REALIZAR COMPRA:</h3>
+                                        <div style="background-color:#F2F2F2;padding-bottom:10px;overflow:hidden;">
+                                          <div class="col-md-12">
+                                                <h4 class="formato1" style=" padding:10px 40px;background-color:gray; text-align:center;color:white;font-size:40px;font-weight:normal;">{{producto.precioUni}}€</h4>
+                                          </div>
+                                          <div class="col-md-12">
+                                            <input id="cprod" name="cprod" type="hidden" required="required">';
+                                            <input type="button" id="addcar" name="addcar" value="ANADIR AL CARRITO" onclick="javascript:insertarProductoCesta('.$obj->COD_PROD.');" class="btn btn-success col-md-12 formato1" style="width:100%;height:60px;border-radius:0px;color:white;font-size:20px" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+               </div>               </div>
+             </div>
+
+
+
+                        <!--<div id="divprods"><img src="{{ asset("../imagenes/productos/") ~ producto.imagen }}" style=" width:45%;height:175px;margin-left:27.5%;margin-top:5%;margin-bottom:2%;" /><div style="height:15%;width:100%;margin-bottom:2px;"><h5 style="color:#086A87;font-weight:bold;text-align:center">{{producto.marca}} {{producto.modelo}}</h5></div><div style="height:15%;width:100%;margin-bottom:2px;"><center><a style="text-decoration:none;color:white" href="./ver_detalles_prod.php?codprod='.$fila->COD_PROD.'" class="btn btn-success"><span style="color:white" class="glyphicon glyphicon-shopping-cart white" ></span> {{producto.precioUni}} €</a>
+                        </center></div></div>
+                            <!--<li><a href="/pagina2/{{ producto.modelo}}/1000">{{ producto.modelo }}</a></li>-->
+
+
+    {% include 'AppBundle:default:footer.html.twig' %}
+  <div>
+</body>
+</html>

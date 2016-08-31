@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Producto" table="producto">
+    <id name="codProd" type="integer" column="COD_PROD">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="marca" type="string" column="MARCA" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="modelo" type="string" column="MODELO" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="stock" type="integer" column="STOCK" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="imagen" type="string" column="IMAGEN" length="1000" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="precioUni" type="float" column="PRECIO_UNI" precision="11" scale="2" nullable="true"/>
+    <many-to-many field="codUsu" target-entity="Usuario" mapped-by="codProd" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>

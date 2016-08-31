@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Pedido" table="pedido">
+    <indexes>
+      <index name="FK_PED_USU" columns="COD_USU"/>
+    </indexes>
+    <id name="codPedido" type="integer" column="COD_PEDIDO">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fechaPed" type="date" column="FECHA_PED" nullable="true"/>
+    <field name="importe" type="float" column="IMPORTE" precision="11" scale="2" nullable="true"/>
+    <many-to-one field="codUsu" target-entity="Usuario" fetch="LAZY">
+      <join-columns>
+        <join-column name="COD_USU" referenced-column-name="COD_USU"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,54 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Proveedor
+ *
+ * @ORM\Table(name="proveedor")
+ * @ORM\Entity
+ */
+class Proveedor
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="COD_PROV", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $codProv;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRE", type="string", length=40, nullable=true)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CIUDAD", type="string", length=40, nullable=true)
+     */
+    private $ciudad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DIRECCION", type="string", length=40, nullable=true)
+     */
+    private $direccion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CP", type="integer", nullable=true)
+     */
+    private $cp;
+
+
+}
+

@@ -1,0 +1,60 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Opinion
+ *
+ * @ORM\Table(name="opinion", indexes={@ORM\Index(name="FK_OP_USU", columns={"COD_USU"}), @ORM\Index(name="FK_OP_PROD", columns={"COD_PROD"})})
+ * @ORM\Entity
+ */
+class Opinion
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="COD_OPINION", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $codOpinion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_OP", type="date", nullable=true)
+     */
+    private $fechaOp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MENSAJE", type="string", length=1000, nullable=true)
+     */
+    private $mensaje;
+
+    /**
+     * @var \Producto
+     *
+     * @ORM\ManyToOne(targetEntity="Producto")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="COD_PROD", referencedColumnName="COD_PROD")
+     * })
+     */
+    private $codProd;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="COD_USU", referencedColumnName="COD_USU")
+     * })
+     */
+    private $codUsu;
+
+
+}
+
